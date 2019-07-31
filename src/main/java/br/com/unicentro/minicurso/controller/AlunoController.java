@@ -13,33 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.unicentro.minicurso.model.Aluno;
 import br.com.unicentro.minicurso.model.Curso;
+import br.com.unicentro.minicurso.repository.AlunoRepository;
 import br.com.unicentro.minicurso.repository.CursoRepository;
 
 @RestController
-@RequestMapping(path="/cursos")
-public class CursoController {
+@RequestMapping(path="/alunos")
+public class AlunoController {
 	
 	@Autowired
-	private CursoRepository repository;
+	private AlunoRepository repository;
 
 	@GetMapping
-	public List<Curso> buscarTodos() {
+	public List<Aluno> buscarTodos() {
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Curso> buscarPorId(@PathVariable("id") Long id) {
+	public Optional<Aluno> buscarPorId(@PathVariable("id") Long id) {
 		return repository.findById(id);
 	}
 	
 	@PostMapping
-	public Curso criar(@RequestBody Curso model) {
+	public Aluno criar(@RequestBody Aluno model) {
 		return repository.save(model);
 	}
 	
 	@PutMapping
-	public Curso atualizar(@RequestBody Curso model) {
+	public Aluno atualizar(@RequestBody Aluno model) {
 		return repository.save(model);
 	}
 	
