@@ -37,6 +37,11 @@ public class AlunoController {
 		return repository.findAll(pageable);
 	}
 	
+	@GetMapping("/nome/{nome}")
+	public List<Aluno> buscarPorNome(@PathVariable("nome") String nome) {
+		return repository.findByNomeContaining(nome);
+	}
+	
 	@GetMapping("/{id}")
 	public Optional<Aluno> buscarPorId(@PathVariable("id") Long id) {
 		return repository.findById(id);
